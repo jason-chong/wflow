@@ -33,12 +33,17 @@ jobs:
     - name: Set the value
       id: step_one
       run: |
-              set -o allexport;source env/${{ inputs.Environment }}/${{ inputs.AppId }}/.env;set +o allexport
+            {
+              echo 'DOT_ENV<<EOF'
+              cat env/${{ inputs.Environment }}/${{ inputs.AppId }}/.env
+              echo EOF
+            } >> "$GITHUB_ENV"
+
     - name: read the value
       id: step_2
       run: |
               echo ${{ vars.APPLICATION_NAME }}
-              echo ${{ env.APPLICATION_NAME }}
+              echo ${{ env.DOT_ENV.APPLICATION_NAME }}
               echo ${{ vars }}
               echo ${{ env }}
               
