@@ -34,9 +34,11 @@ jobs:
       id: step_one
       run: |
               set -o allexport;source env/${{ inputs.Environment }}/${{ inputs.AppId }}/.env;set +o allexport
-              echo ${{ env.APPLICATION_NAME }}
     - name: read the value
       id: step_2
       run: |
+              echo ${{ vars.APPLICATION_NAME }}
               echo ${{ env.APPLICATION_NAME }}
+              echo ${{ vars }}
+              echo ${{ env }}
               
