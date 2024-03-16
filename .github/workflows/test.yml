@@ -38,5 +38,12 @@ jobs:
     - name: read the value
       id: step_2
       run: |
-              echo ${{ env.APPLICATION_NAME }}
-              
+              echo ${{ env.REGION }}
+  second_job:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.Environment }}
+    steps:
+      - name: read the value
+        id: step_2
+        run: |
+                echo ${{ env.REGION }}              
