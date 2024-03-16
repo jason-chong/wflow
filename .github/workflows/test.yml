@@ -1,5 +1,5 @@
 name: Destroy Infrastructure (THIS DELETES YOUR ENV MAKE SURE YOU WANT THIS !!! )
-run-name: Destroy Infrastructure 🚀 ${{ inputs.Environment }}
+run-name: Destroy Infrastructure  ${{ inputs.Environment }}
 
 on:
   workflow_dispatch:
@@ -26,13 +26,13 @@ jobs:
     environment: ${{ inputs.Environment }}
 
     steps:
-
     # Checkout code
     - uses: actions/checkout@v3
-    
+    # Set Env variables for the root first then override any environment specific 
     - name: Set the value
       id: step_one
       run: |
+            cat env/.env >>${GITHUB_ENV} 
             cat env/${{ inputs.Environment }}/${{ inputs.AppId }}/.env >>${GITHUB_ENV}
 
     - name: read the value
