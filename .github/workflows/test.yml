@@ -33,11 +33,7 @@ jobs:
     - name: Set the value
       id: step_one
       run: |
-            {
-              echo 'DOT_ENV<<EOF'
-              cat env/${{ inputs.Environment }}/${{ inputs.AppId }}/.env
-              echo EOF
-            } >> "$GITHUB_ENV"
+            cat env/${{ inputs.Environment }}/${{ inputs.AppId }}/.env >>${GITHUB_ENV}
 
     - name: read the value
       id: step_2
