@@ -1,0 +1,41 @@
+name: Destroy Infrastructure (THIS DELETES YOUR ENV MAKE SURE YOU WANT THIS !!! )
+run-name: Destroy Infrastructure 🚀 ${{ inputs.Environment }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      Environment:
+        description: 'Environment'
+        type: environment
+        required: true
+      AppId:
+        type: choice
+        description: 'ApplicationId'
+        required: true
+        options: 
+           - a
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+
+  resource-group-creation:
+    runs-on: ubuntu
+    environment: ${{ inputs.Environment }}
+
+    steps:
+
+    # Checkout code
+    - uses: actions/checkout@v3
+    
+    - name: Set the value
+      id: step_one
+      run: |
+              source env/${{ inputs.Environment }}/${{ inputs.AppId }}/.env
+    - name: read the value
+      id: step_2
+      run: |
+              echo ${{ vars.APPLICATION_NAME }}
+              
