@@ -32,8 +32,9 @@ jobs:
     - name: Set the value
       id: step_one
       run: |
-            cat env/.env >>${GITHUB_ENV} 
             cat env/${{ inputs.Environment }}/${{ inputs.AppId }}/.env >>${GITHUB_ENV}
+            cat env/.env >>${GITHUB_ENV} 
+            
 
     - name: read the value
       id: step_2
