@@ -33,7 +33,7 @@ jobs:
     - name: Set the value
       id: step_one
       run: |
-              source env/${{ inputs.Environment }}/${{ inputs.AppId }}/.env
+              set -o allexport;source env/${{ inputs.Environment }}/${{ inputs.AppId }}/.env;set +o allexport
               echo ${{ env.APPLICATION_NAME }}
     - name: read the value
       id: step_2
