@@ -22,7 +22,7 @@ permissions:
 jobs:
 
   resource-group-creation:
-    runs-on: ubuntu
+    runs-on: ubuntu-latest
     environment: ${{ inputs.Environment }}
 
     steps:
